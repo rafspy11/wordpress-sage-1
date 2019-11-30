@@ -130,3 +130,26 @@ add_action('after_setup_theme', function () {
         return "<?= " . __NAMESPACE__ . "\\asset_path({$asset}); ?>";
     });
 });
+
+/* 
+departures post type 
+*/
+add_action('init', function () {
+    $labels = array(
+        'name' => 'Odjazd',
+        'singular_name' => 'Odjazd',
+        'menu_name' => 'Odjazdy'
+    );
+    $args = array(
+        'label' => 'departures',
+        'rewrite' => array(
+            'slug' => 'odjazdy'
+        ),
+        'labels' => $labels,
+        'supports' => array('title', 'thumbnail'),
+        'taxonomies' => array(), 
+        'public' => true,
+        'capatibilty_type' => 'post'
+    );
+    register_post_type('departures', $args);
+}, 0);
